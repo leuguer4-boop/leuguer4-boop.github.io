@@ -1,0 +1,278 @@
+@import '../../styles.scss';
+
+.contact-section {
+  padding: 120px 20px 80px;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.contact-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr; /* Formulaire large, Contact direct étroit */
+  gap: 60px;
+
+  /* Réactivité : Passage en colonne unique sur les petits écrans */
+  @media (max-width: 992px) {
+    grid-template-columns: 1fr; 
+    gap: 40px;
+  }
+}
+
+.section-title-left {
+  text-align: left !important;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  color: var(--heading-color);
+  display: flex;
+  align-items: center;
+
+  i {
+    font-size: 1.8rem;
+    margin-left: 15px;
+    color: var(--primary-color);
+  }
+
+  &::after {
+    display: none !important;
+  }
+}
+
+.intro-text {
+  font-size: 1.1rem;
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+/* --- Style du Formulaire --- */
+
+.contact-form-container {
+  background-color: var(--secondary-color);
+  padding: 40px;
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+}
+
+.form-group {
+    margin-bottom: 25px;
+    position: relative; /* Clé pour les icônes de statut et le compteur */
+
+    label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 8px;
+      color: var(--heading-color);
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #444;
+      background-color: #333;
+      color: var(--text-color);
+      border-radius: 6px;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+      font-size: 1rem;
+
+      &:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 4px rgba(var(--primary-color-rgb), 0.5); /* Amélioration A11y */
+        outline: none;
+      }
+    }
+
+    textarea.form-control {
+      resize: vertical;
+    }
+}
+
+/* --- UX/UI Validation (Icônes de Statut) --- */
+.form-status-icon {
+    position: absolute;
+    right: 15px;
+    top: 50%; 
+    transform: translateY(-50%);
+    font-size: 1.1rem;
+    pointer-events: none; 
+    display: none; 
+}
+
+.status-valid .form-status-icon,
+.status-invalid .form-status-icon {
+    display: block;
+}
+
+.status-valid .form-control {
+    border-color: #28a745; 
+}
+.status-valid .form-status-icon.fa-check-circle {
+    color: #28a745; 
+}
+
+.status-invalid .form-control {
+    border-color: #dc3545; 
+}
+.status-invalid .form-status-icon.fa-exclamation-circle {
+    color: #dc3545;
+}
+
+/* Ajustement pour le textarea */
+.form-group:has(textarea) .form-status-icon {
+    top: 30px; 
+    transform: none;
+}
+
+/* Compteur de Caractères */
+.char-counter {
+    position: absolute;
+    bottom: 0;
+    right: 15px;
+    font-size: 0.8rem;
+    color: #888;
+}
+
+/* Alerte d'erreur */
+.alert-error {
+    color: #ff6b6b;
+    font-size: 0.9rem;
+    margin-top: 5px;
+    padding-left: 5px;
+}
+
+/* --- Bouton d'Envoi et Messages de Statut --- */
+.cta-button {
+    width: 100%;
+    text-align: center;
+    padding: 15px 0;
+    font-size: 1.1rem;
+    transition: all 0.3s ease;
+    
+    @media (min-width: 600px) {
+        width: auto;
+        padding: 15px 30px;
+    }
+    
+    &:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+    }
+    .fa-spinner {
+        margin-right: 8px;
+    }
+}
+
+.submission-message {
+    margin-top: 20px;
+    padding: 15px;
+    border-radius: 6px;
+    font-weight: 600;
+    i {
+        margin-right: 8px;
+    }
+}
+.success-message {
+    background-color: #28a745; 
+    color: #fff;
+}
+.error-message {
+    background-color: #dc3545; 
+    color: #fff;
+}
+
+
+/* --- Garantie Psychologique --- */
+.guarantee-box {
+  background-color: var(--accent-color);
+  color: #111;
+  padding: 15px;
+  border-radius: 8px;
+  margin-bottom: 30px;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+
+  i {
+    margin-right: 10px;
+    font-size: 1.2rem;
+    color: var(--background-color); 
+  }
+}
+
+/* --- Style des Contacts Directs (Cartes) --- */
+
+.direct-contact-container {
+  padding-top: 40px; 
+}
+
+.contact-card {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  background-color: var(--secondary-color);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  text-decoration: none;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border: 1px solid #444; /* Ajout d'une bordure subtile */
+
+  &:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(var(--primary-color-rgb), 0.25); /* Ombre plus premium */
+    border-color: var(--primary-color);
+  }
+
+  i {
+    font-size: 2.5rem;
+    color: var(--primary-color);
+    flex-shrink: 0;
+  }
+
+  h4 {
+    margin: 0;
+    font-size: 1.2rem;
+    color: var(--heading-color);
+  }
+
+  p {
+    margin: 0;
+    color: #aaa;
+    font-size: 0.9rem;
+  }
+}
+
+/* Couleurs spécifiques aux canaux */
+.email-card i {
+  color: var(--primary-light);
+}
+.whatsapp-card i {
+  color: #25d366; /* Couleur WhatsApp */
+}
+.email-card-secondary i {
+    color: var(--accent-color);
+}
+
+/* Boîte d'information améliorée */
+.info-box {
+  border-top: 1px solid #444;
+  padding-top: 25px;
+  margin-top: 25px;
+
+  .info-box-title {
+    color: var(--accent-color);
+    margin-bottom: 10px;
+    font-size: 1.2rem;
+  }
+  
+  p {
+      color: #aaa;
+      margin-bottom: 10px;
+      
+      i {
+          margin-right: 8px;
+          color: var(--primary-light);
+      }
+  }
+}
