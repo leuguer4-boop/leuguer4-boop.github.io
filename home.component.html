@@ -1,0 +1,78 @@
+<section class="hero-section">
+    <div class="container">
+        
+        <!-- ============================================================== -->
+        <!-- SECTION 1: PHOTO PROFESSIONNELLE (Grand Cercle Designer) & NOM -->
+        <!-- ============================================================== -->
+        <div class="profile-area fade-in-up-delay">
+            <h1 class="fictional-name">
+                <!-- REMPLACEZ CE NOM PAR LE VÔTRE -->
+             Rovanold Djamen
+            </h1>
+            <div class="profile-image-wrapper">
+                <!-- 
+                    ******************************************************************
+                    *** EMPLACEMENT CRITIQUE : REMPLACEZ CET URL PAR VOTRE PHOTO ***
+                    ******************************************************************
+                -->
+                <img 
+                    src="assets/image2.jpg" 
+                    alt="Portrait professionnel de l'architecte développeur"
+                    class="profile-img"
+                >
+            </div>
+            <p class="image-caption fade-in-up-delay-2">Architecte Java/Angular | Expert Solutions Sur Mesure</p>
+        </div>
+        
+        <!-- ============================================================== -->
+        <!-- SECTION 2: TEXTES ET CTAs (Titre, Résumé et Boutons) -->
+        <!-- ============================================================== -->
+        <div class="hero-content">
+            
+            <h2 class="main-heading fade-in-up-delay-3">
+                De l'Idée à l'Excellence Numérique.
+                <span class="highlight-underline">Vos Solutions</span> Clés en Main.
+            </h2>
+            
+            <p class="summary-text fade-in-up-delay-4">
+                Architecte spécialisé en **Java/Spring** et **Angular/TypeScript**, je conçois et déploie des plateformes haut de gamme. Fiabilité, performance et esthétique sont les piliers de chaque projet.
+            </p>
+            
+            <!-- Call to Action Principal (Les boutons qui étaient cachés) -->
+            <div class="cta-group fade-in-up-delay-5">
+                <a routerLink="/services" class="cta-button primary">
+                    Découvrir Mon Expertise <i class="fas fa-arrow-right"></i>
+                </a>
+                <a routerLink="/contact" class="cta-button secondary">
+                    Planifier un Échange <i class="fas fa-comments"></i>
+                </a>
+            </div>
+
+            <!-- Ajout d'une marge visuelle pour garantir que les CTAs ne sont pas chevauchés -->
+            <div class="spacer"></div>
+        </div>
+    </div>
+</section>
+
+<!-- Section 'Ce que Nous Faisons' - Proposition de Valeur -->
+<section class="value-proposition-section">
+    <div class="container">
+        <h3 class="vp-title">Notre Engagement : Un Écosystème Complet</h3>
+        <p class="vp-subtitle">Votre vision transformée en réalité digitale, qu'il s'agisse d'une application, d'un site ou d'une plateforme e-commerce.</p>
+        
+        <div class="vp-grid">
+            
+            <div 
+                *ngFor="let vp of valuePropositions; let i = index" 
+                class="vp-card"
+            >
+                <div class="vp-icon-circle">
+                    <i [class]="vp.icon + ' vp-icon'"></i>
+                </div>
+                
+                <h4 class="vp-card-title">{{ vp.title }}</h4>
+                <p class="vp-card-text">{{ vp.text }}</p>
+            </div>
+        </div>
+    </div>
+</section>

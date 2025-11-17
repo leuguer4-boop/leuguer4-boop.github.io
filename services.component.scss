@@ -1,0 +1,186 @@
+@import '../../styles.scss'; 
+
+.services-section {
+    padding: 80px 20px 100px;
+    background-color: var(--secondary-color); // Utilisation d'un fond contrasté (e.g., gris foncé)
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* --- En-tête de Section --- */
+
+.section-header {
+    text-align: center;
+    margin-bottom: 60px;
+}
+
+.section-title {
+    color: var(--primary-light);
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+    
+    @media (max-width: 768px) {
+        font-size: 2rem;
+    }
+}
+
+.section-subtitle {
+    color: var(--text-color-light);
+    font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+/* --- Grille des Cartes (Services) --- */
+
+.services-grid {
+    display: grid;
+    /* Crée 3 colonnes sur desktop, 2 sur tablette, 1 sur mobile */
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+}
+
+.service-card {
+    background-color: var(--background-color); // Fond plus sombre que la section
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+    border-top: 5px solid var(--accent-color); /* Ligne de couleur pour l'esthétique */
+    transition: transform 0.4s ease, box-shadow 0.4s ease, background-color 0.4s ease;
+    cursor: pointer;
+    overflow: hidden;
+    position: relative;
+    height: 100%; /* Assure une hauteur uniforme dans la grille */
+
+    // Effet d'interaction (Hover / Focus)
+    &:hover, &:focus {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(var(--primary-color-rgb), 0.5);
+        background-color: #2e2e2e;
+    }
+
+    .icon-wrapper {
+        margin-bottom: 20px;
+        .service-icon {
+            font-size: 3rem;
+            color: var(--primary-color); // Couleur vive pour l'icône
+            transition: color 0.4s ease;
+        }
+    }
+    
+    .card-title {
+        color: var(--primary-light);
+        font-size: 1.5rem;
+        margin-top: 0;
+        margin-bottom: 15px;
+    }
+    
+    .card-description {
+        color: var(--text-color-light);
+        font-size: 0.95rem;
+        line-height: 1.6;
+        margin-bottom: 20px;
+    }
+
+    /* --- Détails (Technologies) pour l'effet interactif --- */
+
+    .tech-list-wrapper {
+        // Cache la liste par défaut sur desktop pour l'effet hover
+        max-height: 0; 
+        opacity: 0;
+        transition: max-height 0.5s ease, opacity 0.4s ease;
+        overflow: hidden;
+    }
+    
+    .tech-list {
+        list-style: none;
+        padding: 0;
+        margin-top: 20px;
+        border-top: 1px solid #444;
+        padding-top: 15px;
+    }
+    
+    .tech-item {
+        display: inline-block;
+        background-color: #3e3e3e;
+        color: var(--accent-color);
+        font-size: 0.8rem;
+        padding: 4px 10px;
+        border-radius: 4px;
+        margin-right: 8px;
+        margin-bottom: 8px;
+        font-weight: 500;
+    }
+
+    /* Révéler la liste au hover/focus */
+    &:hover .tech-list-wrapper,
+    &:focus .tech-list-wrapper {
+        max-height: 200px; /* Assurez-vous que cela est assez grand pour le contenu */
+        opacity: 1;
+    }
+
+    /* Indicateur 'En savoir plus...' */
+    .read-more-indicator {
+        display: block;
+        margin-top: 10px;
+        color: var(--primary-color);
+        font-weight: 600;
+        font-size: 0.9rem;
+        opacity: 0.7;
+        transition: opacity 0.4s;
+    }
+
+    &:hover .read-more-indicator {
+        opacity: 1;
+    }
+
+    /* Adaptation pour les petits écrans (mobile) */
+    @media (max-width: 768px) {
+        // Sur mobile, affiche toujours les technologies pour ne pas dépendre du hover
+        .tech-list-wrapper {
+            max-height: fit-content;
+            opacity: 1;
+            margin-bottom: 15px;
+        }
+        .read-more-indicator {
+            display: none; // Pas nécessaire sur mobile
+        }
+    }
+}
+
+/* --- Pied de Section (Call to Action) --- */
+
+.services-footer {
+    text-align: center;
+    padding-top: 40px;
+    
+    p {
+        color: var(--text-color-light);
+        margin-bottom: 30px;
+        font-style: italic;
+    }
+    
+    .cta-button {
+        display: inline-block;
+        background-color: var(--primary-color);
+        color: var(--background-color);
+        padding: 15px 30px;
+        border-radius: 50px;
+        text-decoration: none;
+        font-weight: 700;
+        font-size: 1.1rem;
+        transition: background-color 0.3s, transform 0.3s;
+        
+        &:hover {
+            background-color: var(--primary-light);
+            transform: scale(1.05);
+        }
+        i {
+            margin-left: 10px;
+        }
+    }
+}
